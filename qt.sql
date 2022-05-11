@@ -1,7 +1,7 @@
 -- Project Step 4 -- DML & DDL
 
 CREATE TABLE `customers` (
-    `customer_ID` int AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `customer_ID` INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
     `customer_first_name` varchar(255) NOT NULL,
     `customer_last_name` varchar(255) NOT NULL,
     `customer_email` varchar(255) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `customers` (
 );
 
 CREATE TABLE `distributors` (
-    `distributor_ID` int AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `distributor_ID` INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
     `distributor_name` varchar(255) NOT NULL,
     `distributor_address` varchar(255) NOT NULL,
     `distributor_email` varchar(255) NOT NULL,
@@ -20,18 +20,18 @@ CREATE TABLE `distributors` (
 );
 
 CREATE TABLE `products` (
-    `product_ID` int AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `product_ID` INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
     `product_type` varchar(255) NOT NULL,
     `product_name` varchar(255) NOT NULL,
-    `distributor_ID` int(16) NOT NULL,
-    `retail_price` int(16) NOT NULL,
+    `distributor_ID` INT(16) NOT NULL,
+    `retail_price` INT(16) NOT NULL,
     `release_date` date NOT NULL,
-    `quant_in_stock` int(16), NOT NULL
+    `quant_in_stock` INT(16), NOT NULL
 );
 
 CREATE TABLE `sale_orders` (
-    `order_number` int(16) AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
-    `customer_ID` int(16) NOT NULL,
+    `order_number` INT(16) AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `customer_ID` INT(16) NOT NULL,
     `order_date` date NOT NULL,
     `cc_number` varchar(255) NOT NULL,
     `cc_exp_date` date NOT NULL,
@@ -49,6 +49,7 @@ CREATE TABLE `sale_order_products` (
     FOREIGN KEY ('product_ID') REFERENCES 'products' ('product_ID'),
     PRIMARY KEY ('order_number','product_ID')
 );
+
 
 INSERT INTO customers (customer_ID, customer_first_name, customer_last_name, customer_email, customer_phone_number, customer_address, customer_birthdate) VALUES 
     ('1','George','Immler','immler@massivehats.net','5039475829','ohio','1990/04/26'),
@@ -72,5 +73,10 @@ INSERT INTO sale_orders(order_number, customer_ID,cc_number, cc_exp_date,deliver
     ('1','12','12982918478729781', '05/24','delivered','paid'),
     ('2','13','12688918478829784','10/29','	delivered','unpaid'),
     ('3','14','75688912478829883','01/26','not delivered','paid');
+
+INSERT INTO sale_order_products(order_number,product_ID,quantity,selling_price,shipping_status,shipping_date) VALUES 
+     ('2343','23423423','900','$43','shipped','04/23/21'),
+     ('2344','23434344','1045','$133','not shipped','03/21/19'),
+     ('2345','234234243','2000','$25','shipped','01/20/17');
 
 
