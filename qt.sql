@@ -1,15 +1,42 @@
 -- Project Step 4 -- DML & DDL
 
 CREATE TABLE `customers` (
-  `customer_ID` INT AUTO_INCREMENT UNIQUE NOT NULL,
-  `customer_first_name` varchar(255) NOT NULL,
-  `customer_last_name` varchar(255) NOT NULL,
-  `customer_email` varchar(255) NOT NULL,
-  `customer_phone_number` varchar(64) NOT NULL,
-  `customer_address` varchar(255) NOT NULL,
-  `customer_birthdate` date NOT NULL
+    `customer_ID` INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `customer_first_name` varchar(255) NOT NULL,
+    `customer_last_name` varchar(255) NOT NULL,
+    `customer_email` varchar(255) NOT NULL,
+    `customer_phone_number` varchar(64) NOT NULL,
+    `customer_address` varchar(255) NOT NULL,
+    `customer_birthdate` date NOT NULL
 );
 
+CREATE TABLE `distributors` (
+    `distributor_ID` INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `distributor_name` varchar(255) NOT NULL,
+    `distributor_address` varchar(255) NOT NULL,
+    `distributor_email` varchar(255) NOT NULL,
+    `distributor_phone` varchar(64) NOT NULL,
+    `distributor_contact_person` varchar(255) NOT NULL
+);
+
+CREATE TABLE `products` (
+    `product_ID` INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `product_type` varchar(255) NOT NULL,
+    `product_name` varchar(255) NOT NULL,
+    `distributor_ID` INT(16) NOT NULL,
+    `retail_price` INT(16) NOT NULL,
+    `release_date` date NOT NULL,
+    `quant_in_stock` INT(16), NOT NULL
+);
+
+CREATE TABLE `sale_orders` (
+    `order_number` INT(16) AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY,
+    `customer_ID` INT(16) NOT NULL,
+    `order_date` date NOT NULL,
+    `cc_number` varchar(255) NOT NULL,
+    `cc_exp_date` date NOT NULL,
+    `order_complete` boolean NOT NULL
+)
 
 INSERT INTO customers (customer_ID, customer_first_name, customer_last_name, customer_email, customer_phone_number, customer_address, customer_birthdate) VALUES 
 ('1','George','Immler','immler@massivehats.net','5039475829','ohio','04/26/90');
