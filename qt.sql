@@ -63,5 +63,14 @@ INSERT INTO products (product_ID,product_type,product_name,distributor_ID,retail
 INSERT INTO products (product_ID,product_type,product_name,distributor_ID,retail_price,release_date,quant_in_stock) VALUES 
 ('3','hat','Magician''s Tophat','04446','49.99','02/12/19','7');
 INSERT INTO products (product_ID,product_type,product_name,distributor_ID,retail_price,release_date,quant_in_stock) VALUES 
-('4','poncho','Unparalleled Comfort','	03002','	79.99','07/08/21','22');
+
+('4','poncho','Unparalleled Comfort','	03002','79.99','07/08/21','22');
+
+INSERT INTO sale_orders(order_number, customer_ID,cc_number, cc_exp_date,delivery_status,paid_status) VALUES 
+('1','12','12982918478729781', '05/24','delivered','paid');
+INSERT INTO sale_orders(order_number, customer_ID,cc_number, cc_exp_date,delivery_status,paid_status) VALUES 
+('2','13','12688918478829784','10/29','	delivered','unpaid');
+INSERT INTO sale_orders(order_number, customer_ID,cc_number, cc_exp_date,delivery_status,paid_status) VALUES 
+('3','14','75688912478829883','01/26','not delivered','paid');
+
 
