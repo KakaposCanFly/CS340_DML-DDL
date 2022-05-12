@@ -20,7 +20,7 @@ INSERT INTO products (product_ID,product_type,product_name,distributor_ID,retail
 
 -- Query to add a Sale Order
 INSERT INTO sale_orders(order_number, customer_ID, order_date, cc_number, cc_exp_date, order_complete) VALUES 
-    ($ord_num,$c_ID,$ord_date,$cc_num,$cc_exp_date,$ord_complete);
+    ($ord_num,$c_ID,$ord_date,$cc_num,$cc_ed,$ord_complete);
 
 -- Query to add a Sale Order Product
 INSERT INTO sale_order_products(order_number,product_ID,quantity,selling_price,shipped,shipping_date) VALUES 
@@ -34,12 +34,16 @@ INSERT INTO sale_order_products(order_number,product_ID,quantity,selling_price,s
 DELETE FROM customers WHERE customer_ID = $cid;
 
 -- Query to delete a Distributor
+DELETE FROM distributors WHERE distributor_ID = $cid;
 
 -- Query to delete a Product
+DELETE FROM products WHERE product_ID = $cid;
 
 -- Query to delete a Sale Order
+DELETE FROM sale_orders WHERE customer_ID = $cid;
 
 -- Query to delete a Sale Order Product
+DELETE FROM sale_order_products WHERE product_ID = $cid;
 
 -- ############################
 --          UPDATE
