@@ -8,15 +8,23 @@
 
 -- Query to add a Customer
 INSERT INTO customers (customer_ID, customer_first_name, customer_last_name, customer_email, customer_phone_number, customer_address, customer_birthdate) VALUES 
-    ($c_id,$fname,$lname,$c_email,$c_phone,$c_address,$c_birthdate);
+    ($c_id,$f_name,$l_name,$c_email,$c_phone,$c_address,$c_birthdate);
 
 -- Query to add a Distributor
+INSERT INTO distributors (distributor_ID, distributor_name, distributor_address, distributor_email, distributor_phone, distributor_contact_person) VALUES 
+    ($c_id,$d_ID,$d_name,$d_address,$d_phone,$d_contact);
 
 -- Query to add a Product
+INSERT INTO products (product_ID,product_type,product_name,distributor_ID,retail_price,release_date,quant_in_stock) VALUES 
+    ($c_id,$p_ID,$p_type,$p_name,$d_ID,$r_price,$rel_date,$quant_stock);
 
 -- Query to add a Sale Order
+INSERT INTO sale_orders(order_number, customer_ID, order_date, cc_number, cc_exp_date, order_complete) VALUES 
+    ($ord_num,$c_ID,$ord_date,$cc_num,$cc_ed,$ord_complete);
 
 -- Query to add a Sale Order Product
+INSERT INTO sale_order_products(order_number,product_ID,quantity,selling_price,shipped,shipping_date) VALUES 
+     ($ord_num,$prod_ID,$quant,$sell_price,$is_shipped,$ship_date),
 
 -- ############################
 --          DELETE
@@ -26,20 +34,24 @@ INSERT INTO customers (customer_ID, customer_first_name, customer_last_name, cus
 DELETE FROM customers WHERE customer_ID = $c_id;
 
 -- Query to delete a Distributor
+DELETE FROM distributors WHERE distributor_ID = $cid;
 
 -- Query to delete a Product
+DELETE FROM products WHERE product_ID = $cid;
 
 -- Query to delete a Sale Order
+DELETE FROM sale_orders WHERE customer_ID = $cid;
 
 -- Query to delete a Sale Order Product
+DELETE FROM sale_order_products WHERE product_ID = $cid;
 
 -- ############################
 --          UPDATE
 -- ############################
 -- Query to update a Customer
 UPDATE customers SET 
-customer_first_name = ISNULL($fname, customer_first_name), 
-customer_last_name = ISNULL($lname, customer_last_name),
+customer_first_name = ISNULL($f_name, customer_first_name), 
+customer_last_name = ISNULL($l_name, customer_last_name),
 customer_email = ISNULL($c_email, customer_email),
 customer_phone_number = ISNULL($c_phone, customer_phone_number),
 customer_address = ISNULL($c_address, customer_address),
@@ -48,7 +60,7 @@ WHERE customer_ID = $c_id;
 
 -- Query to update a Distributor
 UPDATE distributors SET 
-distributor_name = ISNULL($dname, distributor_name),
+distributor_name = ISNULL($d_name, distributor_name),
 distributor_address = ISNULL($d_address, distributor_address),
 distributor_email = ISNULL($d_email, distributor_email),
 distributor_phone = ISNULL($d_phone, distributor_phone),
