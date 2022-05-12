@@ -24,7 +24,7 @@ INSERT INTO sale_orders(order_number, customer_ID, order_date, cc_number, cc_exp
 
 -- Query to add a Sale Order Product
 INSERT INTO sale_order_products(order_number,product_ID,quantity,selling_price,shipped,shipping_date) VALUES 
-     ($ord_num,$prod_ID,$quant,$sell_price,$shipped,$ship_date),
+     ($ord_num,$prod_ID,$quant,$sell_price,$is_shipped,$ship_date),
 
 -- ############################
 --          DELETE
