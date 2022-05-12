@@ -42,7 +42,7 @@ CREATE TABLE `sale_orders` (
     `order_complete` boolean NOT NULL
 );
 
-DROP TABLE IF EXISTS `sale_order_product`;
+DROP TABLE IF EXISTS `sale_order_products`;
 CREATE TABLE `sale_order_products` (
     `order_number` int(16) NOT NULL,
     `product_ID` int(16) NOT NULL,
