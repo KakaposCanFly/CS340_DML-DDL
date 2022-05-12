@@ -95,3 +95,16 @@ selling_price = ISNULL($sell_price, selling_price),
 shipped = ISNULL($is_shipped, shipped),
 shipping_date = ISNULL($ship_date, shipping_date)
 WHERE order_number = $ord_num AND product_ID = $p_id;
+
+
+-- ############################
+--          SELECT
+-- ############################
+-- Query to select entire table (view the whole table)
+SELECT * FROM customers;
+SELECT * FROM distributors;
+SELECT * FROM products;
+SELECT * FROM sale_orders;
+SELECT * FROM sale_order_products;
+
+
