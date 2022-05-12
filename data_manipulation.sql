@@ -75,3 +75,11 @@ order_complete = ISNULL($ord_complete, order_complete)
 WHERE order_number = $ord_num;
 
 -- Query to update a Sale Order Product
+UPDATE sale_order_products SET
+order_number = ISNULL($ord_num, order_number),
+product_ID = ISNULL($p_id, product_ID),
+quantity = ISNULL($quant, quantity),
+selling_price = ISNULL($sell_price, selling_price),
+shipped = ISNULL($is_shipped, shipped),
+shipping_date = ISNULL($ship_date, shipping_date)
+WHERE order_number = $ord_num AND product_ID = $p_id;
