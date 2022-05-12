@@ -8,15 +8,23 @@
 
 -- Query to add a Customer
 INSERT INTO customers (customer_ID, customer_first_name, customer_last_name, customer_email, customer_phone_number, customer_address, customer_birthdate) VALUES 
-    ($cid,$fname,$lname,$c_email,$c_phone,$c_address,$c_birthdate);
+    ($c_id,$f_name,$l_name,$c_email,$c_phone,$c_address,$c_birthdate);
 
 -- Query to add a Distributor
+INSERT INTO distributors (distributor_ID, distributor_name, distributor_address, distributor_email, distributor_phone, distributor_contact_person) VALUES 
+    ($c_id,$d_ID,$d_name,$d_address,$d_phone,$d_contact);
 
 -- Query to add a Product
+INSERT INTO products (product_ID,product_type,product_name,distributor_ID,retail_price,release_date,quant_in_stock) VALUES 
+    ($c_id,$p_ID,$p_type,$p_name,$d_ID,$r_price,$rel_date,$quant_stock);
 
 -- Query to add a Sale Order
+INSERT INTO sale_orders(order_number, customer_ID, order_date, cc_number, cc_exp_date, order_complete) VALUES 
+    ($ord_num,$c_ID,$ord_date,$cc_num,$cc_exp_date,$ord_complete);
 
 -- Query to add a Sale Order Product
+INSERT INTO sale_order_products(order_number,product_ID,quantity,selling_price,shipped,shipping_date) VALUES 
+     ($ord_num,$prod_ID,$quant,$sell_price,$shipped,$ship_date),
 
 -- ############################
 --          DELETE
