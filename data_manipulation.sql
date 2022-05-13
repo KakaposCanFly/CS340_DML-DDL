@@ -107,4 +107,5 @@ SELECT * FROM products;
 SELECT * FROM sale_orders;
 SELECT * FROM sale_order_products;
 
-
+-- Query to select from filtered customers
+-- THIS WILL BE HANDLED BY THE BACKEND
